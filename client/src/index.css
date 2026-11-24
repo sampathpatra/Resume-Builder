@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+* {
+    font-family: "Plus Jakarta Sans", "Inter", sans-serif;
+}
+
+.font-mono {
+    font-family: "JetBrains Mono", monospace;
+}
+
+/* Subtle light grid and dot patterns for clean SaaS aesthetic */
+.bg-light-grid {
+    background-size: 36px 36px;
+    background-image: 
+        linear-gradient(to right, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+}
+
+.bg-light-dots {
+    background-image: radial-gradient(rgba(15, 23, 42, 0.07) 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+/* Slow, elegant ambient floating light animations (20-30s gentle drifting) */
+@keyframes float-ambient-1 {
+    0%, 100% {
+        transform: translate3d(0px, 0px, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(24px, -18px, 0) scale(1.04);
+    }
+}
+
+@keyframes float-ambient-2 {
+    0%, 100% {
+        transform: translate3d(0px, 0px, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(-20px, 16px, 0) scale(0.97);
+    }
+}
+
+@keyframes float-ambient-3 {
+    0%, 100% {
+        transform: translate3d(0px, 0px, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(18px, 20px, 0) scale(1.03);
+    }
+}
+
+.animate-ambient-1 {
+    animation: float-ambient-1 24s ease-in-out infinite;
+}
+
+.animate-ambient-2 {
+    animation: float-ambient-2 28s ease-in-out infinite;
+}
+
+.animate-ambient-3 {
+    animation: float-ambient-3 26s ease-in-out infinite;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Fix autofill background issue */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+    background-color: transparent !important;
+}
+
+@layer base {
+    button {
+        @apply cursor-pointer;
+    }
+    input:not([type="checkbox"]){
+        @apply outline-none focus:ring-2 focus:ring-violet-500/20 border border-slate-200 focus:border-violet-600 rounded-lg;
+    }
+    textarea {
+        @apply outline-none focus:ring-2 focus:ring-violet-500/20 border border-slate-200 focus:border-violet-600 rounded-lg resize-none;
+    }
+}
